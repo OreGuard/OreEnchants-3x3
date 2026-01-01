@@ -1,0 +1,11 @@
+name: OreEnchants
+version: '1.0-abuild'
+main: ore.OreEnchants
+api-version: '1.20'
+authors: [ cometa ]
+description: Cometa - Unique Software for minecraft 1.21.4.
+website: https://cometa.space
+commands:
+  orepickaxe:
+    description: Получить зачарованную кирку 3x3
+    usage: /orepickaxe

@@ -1,0 +1,10 @@
+ore\utils\ColorUtil.class
+ore\PickaxeListener.class
+ore\OreEnchants.class
+ore\configs\MainConfig.class
+ore\utils\WorldGuardUtil.class
+ore\CustomEnchant.class
+ore\nms\VersionControl.class
+ore\GiveEnchantedPickaxeCommand.class
+ore\configs\ConfigData.class
+ore\utils\NumberUtil.class
