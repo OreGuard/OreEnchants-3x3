@@ -61,15 +61,13 @@ public class CustomEnchant {
                 }
 
                 PersistentDataContainer container = meta.getPersistentDataContainer();
-                // Option 1: Check if the key exists first
+
                 if (container.has(key, PersistentDataType.STRING)) {
                     return container.get(key, PersistentDataType.STRING);
                 }
                 return null;
 
-                // Option 2: Use get() instead of getOrDefault() with a non-null default
-                // String result = container.get(key, PersistentDataType.STRING);
-                // return result; // This will be null if the key doesn't exist
+
             }
         } else {
             return null;

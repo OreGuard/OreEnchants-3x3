@@ -63,19 +63,19 @@ public class PickaxeListener implements Listener {
     public void checkPickAxeBreak(BlockBreakEvent e) {
         Player player = e.getPlayer();
 
-        // Проверяем, что игрок держит кирку
+
         if (player.getInventory().getItemInMainHand() != null &&
                 player.getInventory().getItemInMainHand().getType().toString().toUpperCase().contains("PICKAXE") &&
                 !player.getGameMode().equals(GameMode.CREATIVE) &&
                 player.getInventory().getItemInMainHand().getItemMeta() != null) {
 
-            // Проверяем наличие зачарования
+
             String tag = OreEnchants.getCustomEnchant().getTag(player.getInventory().getItemInMainHand(), "Pickaxe3x3");
             if (tag == null || tag.length() == 0) {
                 return;
             }
 
-            // Проверяем взгляд игрока
+
             List<Block> lastTwoTargetBlocks = player.getLastTwoTargetBlocks((Set)null, 10);
             if (lastTwoTargetBlocks.size() != 2) {
                 return;
@@ -85,20 +85,18 @@ public class PickaxeListener implements Listener {
             Block adjacentBlock = (Block)lastTwoTargetBlocks.get(0);
             BlockFace face = targetBlock.getFace(adjacentBlock);
 
-            // Получаем все блоки для разрушения
+
             List<Block> blocksToBreak = this.getBlocks(e.getBlock(), face.toString());
 
-            // Проверяем WorldGuard для каждого блока
+
             List<Block> allowedBlocks = new ArrayList<>();
 
             for (Block block : blocksToBreak) {
-                // Проверяем разрешено ли разрушение
                 if (WorldGuardUtil.canBreakBlock(player, block.getLocation())) {
                     allowedBlocks.add(block);
                 }
             }
 
-            // Ломаем только разрешенные блоки
             if (!allowedBlocks.isEmpty()) {
                 this.breakBlocks(allowedBlocks);
             }

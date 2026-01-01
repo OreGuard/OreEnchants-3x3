@@ -17,22 +17,20 @@ public class WorldGuardUtil {
      */
     public static boolean canBreakBlock(Player player, Location location) {
         if (!OreEnchants.isWorldGuardEnabled()) {
-            return true; // Если WorldGuard не установлен, разрешаем ломать
+            return true;
         }
 
         try {
-            // Получаем экземпляр WorldGuard
             WorldGuardPlugin worldGuard = WorldGuardPlugin.inst();
 
-            // Создаем запрос для проверки региона
             RegionQuery query = WorldGuard.getInstance().getPlatform().getRegionContainer().createQuery();
             ApplicableRegionSet regions = query.getApplicableRegions(BukkitAdapter.adapt(location));
 
-            // Проверяем флаг BLOCK_BREAK
+
             return regions.testState(worldGuard.wrapPlayer(player), Flags.BLOCK_BREAK);
 
         } catch (Exception e) {
-            // В случае ошибки лучше запретить ломать
+
             e.printStackTrace();
             return false;
         }
@@ -50,7 +48,7 @@ public class WorldGuardUtil {
             RegionQuery query = WorldGuard.getInstance().getPlatform().getRegionContainer().createQuery();
             ApplicableRegionSet regions = query.getApplicableRegions(BukkitAdapter.adapt(location));
 
-            // Если регион не пустой и флаг BUILD = DENY, то это защищенный регион
+
             return !regions.getRegions().isEmpty() && !regions.testState(null, Flags.BUILD);
 
         } catch (Exception e) {

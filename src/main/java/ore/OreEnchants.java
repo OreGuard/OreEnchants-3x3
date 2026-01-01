@@ -38,7 +38,7 @@ public final class OreEnchants extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        // Plugin shutdown logic
+
     }
 
     public static OreEnchants getInstance() {
